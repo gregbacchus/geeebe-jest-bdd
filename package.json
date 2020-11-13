@@ -1,0 +1,36 @@
+{
+  "name": "@geeebe/jest-bdd",
+  "version": "1.0.7",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest --coverage",
+    "build": "rm -rf dist && npx tsc --outDir dist --sourceMap",
+    "lint": "./node_modules/.bin/tslint --config tslint.json -t verbose src/**/*.ts",
+    "prepublishOnly": "npm run lint && npm run build && npm version patch",
+    "postpublish": "git push",
+    "start": "node -r ts-node/register src/index.ts",
+    "watch": "npx nodemon"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jest": "^24.0.22",
+    "jest": "^24.9.0"
+  },
+  "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gregbacchus/geeebe-jest-bdd.git"
+  },
+  "devDependencies": {
+    "@geeebe/common": "^1.0.61",
+    "@types/node": "^12.12.6",
+    "nodemon": "^1.19.4",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  },
+  "libOnly": true
+}
