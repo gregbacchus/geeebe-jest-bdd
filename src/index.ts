@@ -1,3 +1,5 @@
+export { given, When, WhenEach } from './next-gen';
+
 export const describeGiven = (name: string, fn: () => void) => {
   describe(`GIVEN ${name}`, fn);
 };
