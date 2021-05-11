@@ -23,6 +23,7 @@
   "tslint.exclude": "node_modules",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "cSpell.words": [
+    "geeebe",
     "xdescribe",
     "xthen",
     "xwhen"
