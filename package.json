@@ -1,6 +1,6 @@
 {
   "name": "@geeebe/jest-bdd",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Provides type-safe constructs for DBB using Jest",
   "main": "./dist/index.js",
   "scripts": {
