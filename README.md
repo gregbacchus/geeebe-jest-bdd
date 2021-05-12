@@ -84,10 +84,11 @@ import { given } from '../next-gen';
 
 given('async function is created', () => {
   // perform any logic to fulfil the "given" condition described
-  const double = (i?: number) => Promise.resolve(Math.pow(i ?? 3, 2));
+  const inner = jest.fn((n: number) => Math.pow(n, 2));
+  const fn = (i?: number) => Promise.resolve(inner(i ?? 3));
 
   // return any artifacts required by the tests
-  return ({ fn: double })
+  return ({ fn, inner })
 }, (when, then) => {
   when('the function is called', ({ fn }) => {
     const result = fn();
@@ -97,15 +98,22 @@ given('async function is created', () => {
     });
   });
 
-  when.each([1, -2, 3])('is called with arg %s', ({ fn }, i) => {
+  when.each([1, -2, 3])('is called with arg %s', ({ fn, inner }, i) => {
     const result = fn(i);
 
+    then(`the inner function will have been called once`, async () => {
+      await result;
+      expect(inner).toHaveBeenCalledTimes(1);
+    });
+
     then(`the result will be positive`, async () => {
-      expect(await result).toBeGreaterThan(0);
+      const n = await result;
+      expect(n).toBeGreaterThan(0);
     });
 
     then(`the result will be ${i * i}`, async () => {
-      expect(await result).toBe(i * i);
+      const n = await result;
+      expect(n).toBe(i * i);
     });
   });
 });
