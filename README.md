@@ -84,7 +84,7 @@ import { given } from '../next-gen';
 
 given('async function is created', () => {
   // perform any logic to fulfil the "given" condition described
-  const double = (i?: number) => Promise.resolve((i ?? 3) ^ 2);
+  const double = (i?: number) => Promise.resolve(Math.pow(i ?? 3, 2));
 
   // return any artifacts required by the tests
   return ({ fn: double })
@@ -98,7 +98,7 @@ given('async function is created', () => {
   });
 
   when.each([1, -2, 3])('is called with arg %s', ({ fn }, i) => {
-    const result = fn();
+    const result = fn(i);
 
     then(`the result will be positive`, async () => {
       expect(await result).toBeGreaterThan(0);
