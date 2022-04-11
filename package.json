@@ -2,35 +2,35 @@
   "name": "@geeebe/jest-bdd",
   "version": "1.0.14",
   "description": "Provides type-safe constructs for DBB using Jest",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gregbacchus/geeebe-jest-bdd.git"
+  },
+  "license": "MIT",
+  "author": "",
   "main": "./dist/index.js",
+  "types": "./src/index.ts",
   "scripts": {
-    "test": "./node_modules/.bin/jest --coverage",
     "build": "rm -rf dist && npx tsc --outDir dist --sourceMap",
     "lint": "./node_modules/.bin/tslint --config tslint.json -t verbose src/**/*.ts",
     "prepublishOnly": "npm run lint && npm run build && npm version patch",
     "postpublish": "git push",
     "start": "node -r ts-node/register src/index.ts",
+    "test": "./node_modules/.bin/jest --coverage",
     "watch": "npx nodemon"
   },
-  "author": "",
-  "license": "MIT",
   "dependencies": {
-    "@types/jest": "^26.0.23",
-    "jest": "^26.6.3"
-  },
-  "types": "./src/index.ts",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:gregbacchus/geeebe-jest-bdd.git"
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1"
   },
   "devDependencies": {
-    "@geeebe/common": "^1.0.76",
-    "@types/node": "^15.0.2",
-    "nodemon": "^2.0.7",
-    "ts-jest": "^26.5.6",
-    "ts-node": "^9.1.1",
+    "@geeebe/common": "^1.0.79",
+    "@types/node": "^17.0.23",
+    "nodemon": "^2.0.15",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
     "tslint": "^6.1.3",
-    "typescript": "^4.2.4"
+    "typescript": "^4.6.3"
   },
   "libOnly": true
 }
